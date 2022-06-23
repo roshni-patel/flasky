@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from flask_migrate import Migrate 
 from dotenv import load_dotenv
 import os 
@@ -11,6 +12,8 @@ load_dotenv() # will load the .env file
 def create_app(testing = None):
     # __name__ stores the name of the module we're in
     app = Flask(__name__)
+    CORS(app)
+
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
     if testing == None:
